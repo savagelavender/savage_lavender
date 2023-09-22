@@ -32,7 +32,7 @@ function num_markers!(robot):: Integer
     return num
     end
 end
-
+r=robot(animate=true)
 ####
 
 move_throwborder!
