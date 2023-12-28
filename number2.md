@@ -1,39 +1,39 @@
 using HorizonSideRobots
 r=Robot(animate=true)
-function mark_frame_perimetr!(r::Robot)
-    num_vert = moves!(r, Sud)
-    num_hor = moves!(r, West)
-    #УТВ: Робот - в Юго-Западном углу
-
-    for side in (Nord, Ost, Sud, West)
-        putmarkers!(r, side)
-    end 
-    #УТВ: По всему периметру стоят маркеры
-
-    moves!(r, Nord, num_vert)
-    moves!(r, Ost, num_hor)
-    #УТВ: Робот - в исходном положении
-end
-
-function moves!(r::Robot,side::HorizonSide)
-    num_steps=0
-    while isborder(r,side)==false
-        move!(r,side)
-        num_steps+=1
+function result!(robot):Nothing
+    a = 0
+    b = 0
+    while !isborder(robot, Nord)
+        move!(robot, Nord)
+        a += 1
     end
-    return num_steps
-end
-
-function moves!(r::Robot,side::HorizonSide,num_steps::Int)
-    for _ in 1:num_steps # символ "_" заменяет фактически не используемую переменную
-        move!(r,side)
+    while !isborder(robot, West)
+        move!(robot, West)
+        b += 1
+    end
+    putmarker!(robot)
+    while !isborder(robot, Ost)
+        putmarker!(robot)
+        move!(robot, Ost)
+    end
+    while !isborder(robot, Sud)
+        putmarker!(robot)
+        move!(robot, Sud)
+    end
+    while !isborder(robot, West)
+        putmarker!(robot)
+        move!(robot, West)
+    end
+    while !isborder(robot, Nord)
+        putmarker!(robot)
+        move!(robot, Nord)
+    end
+    while a > 0
+        move!(robot, Sud)
+        a -= 1
+    end
+    while b > 0
+        move!(robot, Ost)
+        b -= 1
     end
 end
-
-function putmarkers!(r::Robot, side::HorizonSide)
-    while isborder(r,side)==false
-        move!(r,side)
-        putmarker!(r)
-    end
-end
-
