@@ -16,3 +16,4 @@ function shuttle!(stop_condition::Function, robot, side)
         k += 2
     end
 end
+smth!(()->stop_condition()&&stop cond())
