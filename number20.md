@@ -13,7 +13,8 @@ function backside(side)
 end
  
 function along_rec!(robot, side)
-    if isborder(robot, side) putmarker!(robot)
+    if isborder(robot, side) 
+    putmarker!(robot)
     else
         move!(robot, side)
         along_rec!(robot, side)
