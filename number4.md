@@ -1,6 +1,6 @@
 using HorizonSideRobots
 
-r = Robot("task1.sit",animate = true)
+r = Robot(animate = true)
 
 function mark_kross2!(robot)
     for side in ((Nord, West), (Nord, Ost), (Sud, West), (Sud, Ost))
