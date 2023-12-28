@@ -1,7 +1,7 @@
 using HorizonSideRobots
 robot = Robot( animate = true)
 
-function task9!(robot)
+function number9!(robot)
     putmarker!(robot)
     nums = markchessrow!(robot, 0)
     #flag = 1 в пред клетке был маркер
@@ -74,4 +74,4 @@ function move_n!(robot, side::HorizonSide, n::Int)
     end    
 end
 
-task9!(robot)
+number9!(robot)
