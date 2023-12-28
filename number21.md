@@ -12,7 +12,7 @@ function backside(side)
     end
 end
 
-function along_rec!(robot, side1, side2 = ((side1 == Nord) || (side1 == Sud)) ? West : Nord)
+function along_rec!(robot, side1, side2 = ((side1 == Nord) || (side1 == Sud))
     if isborder(robot, side1)
         move!(robot, side2)
         along_rec!(robot, side1)
