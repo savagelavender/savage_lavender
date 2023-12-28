@@ -1,4 +1,4 @@
-function go_back_i_want_to_be_monkey(robot, x, y):nothing
+function go_back(robot, x, y):nothing
     while y < 0
         move!(robot, Nord)
         y += 1
@@ -49,6 +49,6 @@ function result(robot):nothing
         if dir == Ost dir = West
         else dir = Ost end
     end
-    print("Count Of Borders: ", cnt)
-    go_back_i_want_to_be_monkey(robot, x, y)
+    print("Borders: ", cnt)
+    go_back(robot, x, y)
 end
