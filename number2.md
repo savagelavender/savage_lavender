@@ -10,10 +10,10 @@ end
  
  
 function task2!(r)
-	Side1 = Nord
-	Side2 = East
-	Side3 = Sud 
-	Side4 = West
+	#Side1 = Nord
+	#Side2 = East
+	#Side3 = Sud 
+	#Side4 = West
     a = 0
     b = 0
     while !isborder(r, Nord)
@@ -29,11 +29,11 @@ function task2!(r)
     goandmark!(r, Nord)
     goandmark!(r, East)
     while a != 0
-        move!(r, Side3)
+        move!(r, Sud)
         a -= 1
     end
     while b != 0
-        move!(r, Side4)
+        move!(r, East)
         b -= 1
     end
 end
