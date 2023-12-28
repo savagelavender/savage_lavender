@@ -1,5 +1,5 @@
 using HorizonSideRobots
-robot = Robot("starts/task9_2.sit", animate = true)
+robot = Robot( animate = true)
 
 function task9!(robot)
     putmarker!(robot)
