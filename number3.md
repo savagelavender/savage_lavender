@@ -1,40 +1,42 @@
 using HorizonSideRobots
-robot = Robot("task1.sit",animate = true)
+robot = Robot(animate = true)
 
-function mark_square!(robot)
-    
-    num_nord = topleft_num!(robot,Nord)
-    num_west = topleft_num!(robot,West)#в левую верхнюю
-    for side in (Ost,Sud,West,Nord)
-        markrow!(robot,side)    
-    end    #закр периметр
-    topleft_num!(robot,Nord)
-    topleft_num!(robot,West)#в левую верхнюю
-    goback!(robot,Ost,num_west)
-    goback!(robot,Sud,num_nord)#в исходную
-    
-end
-
-function topleft_num!(robot,side)
-    num = 0
-    while !isborder(robot,side)
-        move!(robot,side)
-        num += 1
+function result!(robot):Nothing
+    a = 0
+    b = 0
+    while !isborder(robot, Nord)
+        move!(robot, Nord)
+        a += 1
     end
-    return num
-end
-
-function markrow!(robot,side)
-    while !isborder(robot,side)
+    while !isborder(robot, West)
+        move!(robot, West)
+        b += 1
+    end
+    while (!isborder(robot, Sud) || !ismarker(robot))
         putmarker!(robot)
-        move!(robot,side)
+        while !isborder(robot, Ost)
+            move!(robot, Ost)
+            putmarker!(robot)
+        end
+        while !isborder(robot, West)
+            move!(robot, West)
+            putmarker!(robot)
+        end
+        if !isborder(robot, Sud)
+            move!(robot, Sud)
+        end
     end
-end
-
-function goback!(robot,side,num_steps)
-    for _ in range(0,num_steps-1) 
-        move!(robot,side)  
-    end 
+    while !isborder(robot, Nord)
+        move!(robot, Nord)
+    end
+    while a > 0
+        move!(robot, Sud)
+        a -= 1
+    end
+    while b > 0
+        move!(robot, Ost)
+        b -= 1
+    end
 end
 
 mark_square!(robot)
