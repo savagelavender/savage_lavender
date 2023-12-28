@@ -29,8 +29,10 @@ function result(robot):nothing
         flag = false
         while !isborder(robot, dir)
             move!(robot, dir)
-            if dir == Ost x += 1
-            else x -= 1 end
+            if dir == Ost 
+            x += 1
+            else x -= 1 
+            end
             if isborder(robot, Sud) flag = true
             else 
                 if flag cnt += 1 end 
