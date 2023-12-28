@@ -1,5 +1,5 @@
 using HorizonSideRobots
-robot = Robot("starts/task8.sit",animate = true)
+robot = Robot(animate = true)
 
 function find_marker!(robot)
     side = Nord
