@@ -14,7 +14,7 @@ function backside!(side)
 end
  
 function number22!(r, side)
-    if isborder(r, side) == 0
+    if !isborder(r, side) 
         move!(r, side)
         number22!(r, side)
         move!(r, backside(side))
